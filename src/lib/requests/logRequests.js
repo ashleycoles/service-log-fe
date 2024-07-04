@@ -1,7 +1,13 @@
 const BASE_URL = 'http://localhost:8000/api/'
 
-export async function getLogs() {
-    const res = await fetch(BASE_URL + 'logs')
+export async function getLogs(type = null) {
+    let url = `${BASE_URL}logs`
+
+    if (type) {
+        url += `?type=${type}`
+    }
+
+    const res = await fetch(url)
 
     if (res.ok) {
         return await res.json()

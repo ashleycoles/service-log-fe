@@ -12,12 +12,9 @@
         {#await response}
             Loading...
         {:then log}
-            <div
-                class="flex justify-between items-center px-5 py-2 mb-5 border-b-2 bg-zinc-200"
-            >
+            <div class="flex justify-between items-center px-5 py-2 mb-5 border-b-2 bg-zinc-200">
                 <h1 class="text-3xl">
-                    <span class="font-bold">{log.data.type.name}</span> - {log
-                        .data.title}
+                    <span class="font-bold">{log.data.type.name}</span> - {log.data.title}
                 </h1>
                 <span class="text-xl">{log.data.date}</span>
             </div>
