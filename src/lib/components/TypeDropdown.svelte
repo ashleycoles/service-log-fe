@@ -2,6 +2,8 @@
     import { createEventDispatcher } from "svelte";
     import { logTypes } from "../stores/logTypes"
 
+    export let hasAllOption = true
+
     const dispatch = createEventDispatcher()
 
     function onChange(e) {
@@ -12,9 +14,11 @@
 
 </script>
 
-<select on:change={onChange} class="bg-zinc-100 p-3">
+<select id='types' on:change={onChange} class="bg-zinc-100 p-3">
     <option disabled selected>Select Log Type</option>
-    <option value="0">All</option>
+    {#if hasAllOption}
+        <option value="0">All</option>        
+    {/if}
     {#each $logTypes as type (type.id)}
         <option value={type.id}>{type.name}</option>
     {/each}
