@@ -4,6 +4,7 @@
     import TypeDropdown from "./TypeDropdown.svelte"
     import NewLogModal from "./NewLogModal.svelte"
     import {logs} from "../stores/logs"
+    import Button from "../atoms/Button.svelte";
 
     let selectedType
     let addingLog = false
@@ -21,7 +22,7 @@
 <main class="container mx-auto">
     <div class="flex justify-between mb-5">
         <TypeDropdown on:typeChange={e => selectedType = e.detail.typeId}/>
-        <button on:click={() => addingLog = true}>New Log</button>
+        <Button text="New Log" colour="green" action={() => addingLog = true} />
     </div>
 
     {#each $logs as log (log.id)}
@@ -33,10 +34,10 @@
     {/if}
 
     {#if logToDisplayId}
-        <SingleLogModal id={logToDisplayId} />
+        <SingleLogModal id={logToDisplayId} on:close={() => logToDisplayId = null} />
     {/if}
 
     {#if addingLog}
-        <NewLogModal on:logAdded={closeNewLogModal} />
+        <NewLogModal on:logAdded={closeNewLogModal} on:close={() => addingLog = false} />
     {/if}
 </main>

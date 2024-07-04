@@ -1,6 +1,10 @@
 <script>
+    import { createEventDispatcher } from "svelte";
+    import Button from "../atoms/Button.svelte";
     import HostedImage from "../atoms/HostedImage.svelte";
     import { getLog } from "../requests/logRequests";
+
+    const dispatch = createEventDispatcher()
 
     export let id;
 
@@ -16,7 +20,10 @@
                 <h1 class="text-3xl">
                     <span class="font-bold">{log.data.type.name}</span> - {log.data.title}
                 </h1>
-                <span class="text-xl">{log.data.date}</span>
+                <div>
+                    <span class="text-xl">{log.data.date}</span>
+                    <Button text="Close" action={() => dispatch('close')} colour='wat' />
+                </div>
             </div>
 
             <div class="px-10 mb-10">
