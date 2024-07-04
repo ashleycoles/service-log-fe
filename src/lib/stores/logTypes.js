@@ -7,7 +7,7 @@ function createLogTypesStore() {
     const { subscribe } = readable([], set => {
         setStore = set;
         getData();
-        return () => {}; // No cleanup necessary
+        return () => {};
     });
 
     const getData = async () => {
@@ -21,7 +21,7 @@ function createLogTypesStore() {
 
     return {
         subscribe,
-        refresh: getData // Expose the getData function as refresh
+        refresh: getData 
     };
 }
 
