@@ -20,7 +20,7 @@
         <LogBookSummary id={log.id} title={log.title} type={log.type.name} date={log.date} on:displayLog={e => logToDisplayId = e.detail.id}/>
     {/each}
 
-    {#if logs.length === 0}
+    {#if $logs.length === 0}
         <p>No logs found</p>
     {/if}
 

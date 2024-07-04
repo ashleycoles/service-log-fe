@@ -15,7 +15,7 @@ function createLogsStore() {
             const data = await getLogs(type);
             setStore(data.data);
         } catch (error) {
-            console.error("Failed to fetch types:", error);
+            console.error("Failed to fetch logs:", error);
         }
     };
 
